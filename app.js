@@ -10,7 +10,7 @@ app.get("/",function(req,res) {
 
 app.use(bodyParser.urlencoded({extended:true}));
 
-app.post("/",function(req,res) {
+app.get("/",function(req,res) {
     var city = req.body.city;
     const url = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=352894939553479100fed867030cc55c&units=metric";
     https.get(url,function(response) {
