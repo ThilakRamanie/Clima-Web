@@ -4,6 +4,8 @@ const app = express();
 const body = require("body-parser");
 const bodyParser = require("body-parser");
 
+console.log('called');
+
 app.get("/",function(req,res) {
     res.sendFile(__dirname+"/index.html");
 })
@@ -12,8 +14,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 app.post("/",function(req,res) {
     var city = req.body.city;
-   // const url = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=352894939553479100fed867030cc55c&units=metric";
-     const url = 'https://api.openweathermap.org/data/2.5/weather?q=dublin&appid=352894939553479100fed867030cc55c&units=metric';
+   const url = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=352894939553479100fed867030cc55c&units=metric";
+    //  const url = 'https://api.openweathermap.org/data/2.5/weather?q=dublin&appid=352894939553479100fed867030cc55c&units=metric';
     https.get(url,function(response) {
         response.on("data", function(data) {
             const weatherData = JSON.parse(data);
